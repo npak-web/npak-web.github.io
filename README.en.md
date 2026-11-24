@@ -4,7 +4,7 @@
 
 [English](README.en.md) | [Русский](README.md)
 
-**Live Demo:** [Try NPAK Online Converter (.zip ↔ .npak)](https://github.io)
+**Live Demo:** [Try NPAK Online Converter (.zip ↔ .npak)](https://npak-web.github.io)
 
 ---
 
