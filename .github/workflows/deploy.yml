@@ -1,0 +1,30 @@
+name: Deploy static site
+
+on:
+  push:
+    branches: ["main"] # Запускается при каждом обновлении ветки main
+  workflow_dispatch: # Позволяет запускать публикацию вручную кнопкой на сайте
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Скачивание файлов из репозитория
+        uses: actions/checkout@v4
+
+      - name: Упаковка сайта для публикации
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "." # Берет все файлы из корня репозитория
+
+      - name: Выкладка на GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
